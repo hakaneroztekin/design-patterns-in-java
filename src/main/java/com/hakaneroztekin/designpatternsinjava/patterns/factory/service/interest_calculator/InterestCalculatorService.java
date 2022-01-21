@@ -3,11 +3,13 @@ package com.hakaneroztekin.designpatternsinjava.patterns.factory.service.interes
 import com.hakaneroztekin.designpatternsinjava.patterns.factory.enums.ExpenseType;
 
 public interface InterestCalculatorService {
-    ExpenseType getExpenseType();
-
-    double getInterestRate();
 
     default double calculateInterestRate(double amount) {
         return getInterestRate() * amount;
     }
+
+    ExpenseType getExpenseType();
+
+    double getInterestRate();
+
 }

@@ -3,7 +3,7 @@ package com.hakaneroztekin.designpatternsinjava.patterns;
 import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
 
 public interface DesignPattern {
-    PatternName getName();
+    PatternName getPatternName();
 
     void printScenario();
 

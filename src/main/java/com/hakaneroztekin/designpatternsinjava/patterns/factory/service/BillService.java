@@ -18,7 +18,7 @@ public class BillService implements DesignPattern {
     private final InterestCalculatorServiceFactory interestCalculatorServiceFactory;
 
     @Override
-    public PatternName getName() {
+    public PatternName getPatternName() {
         return PatternName.FACTORY;
     }
 
@@ -35,6 +35,7 @@ public class BillService implements DesignPattern {
                 .expense(Expense.builder().expenseType(ExpenseType.TRAVEL).totalExpense(1000).build())
                 .expense(Expense.builder().expenseType(ExpenseType.HEALTH).totalExpense(250).build())
                 .build();
+
 
         Double totalInterest = monthlyExpense.getExpenses().stream()
                 .map(expense -> {
