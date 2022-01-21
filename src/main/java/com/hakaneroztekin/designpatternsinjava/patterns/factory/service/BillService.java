@@ -35,7 +35,7 @@ public class BillService implements DesignPattern {
                 .expense(Expense.builder().expenseType(ExpenseType.TRAVEL).totalExpense(1000).build())
                 .expense(Expense.builder().expenseType(ExpenseType.HEALTH).totalExpense(250).build())
                 .build();
-
+        log.info("Monthly expense is " + monthlyExpense);
 
         Double totalInterest = monthlyExpense.getExpenses().stream()
                 .map(expense -> {
