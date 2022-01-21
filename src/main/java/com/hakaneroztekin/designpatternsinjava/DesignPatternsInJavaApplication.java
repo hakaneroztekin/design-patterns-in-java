@@ -1,5 +1,6 @@
 package com.hakaneroztekin.designpatternsinjava;
 
+import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
 import com.hakaneroztekin.designpatternsinjava.patterns.DesignPattern;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,24 +26,42 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
     @Override
     public void run(String... args) {
         log.info("##############################################");
-        log.info("Select a design pattern");
-        designPatterns.forEach(designPattern -> log.info(designPattern.getName().getName()));
-        Scanner scan = new Scanner(System.in);
-        String selectedPattern = scan.next();
-        log.info("Selected:" + selectedPattern);
-        Optional<DesignPattern> designPatternOptional = designPatterns.stream()
-                .filter(pattern -> pattern.getName().getName().equals(selectedPattern))
-                .findFirst();
+        printDesignPatterns();
 
-        if(designPatternOptional.isEmpty()) {
-            throw new RuntimeException("Design pattern is not found for " + selectedPattern);
-        }
+        String selectedPatternId = getUserInput();
+        DesignPattern matchingPattern = getDesignPattern(selectedPatternId);
 
-        DesignPattern matchingPattern = designPatternOptional.get();
         matchingPattern.printScenario();
         matchingPattern.apply();
 
         log.info("Exiting successfully.");
         log.info("##############################################");
+    }
+
+    private String getUserInput() {
+        Scanner scan = new Scanner(System.in);
+        String selectedPatternId = scan.next();
+        return selectedPatternId;
+    }
+
+    private void printDesignPatterns() {
+        log.info("Select a design pattern by number");
+        PatternName.getPatternByIdMap().forEach((id, pattern) -> {log.info(id + ": " + pattern.getName());});
+    }
+
+    private DesignPattern getDesignPattern(String selectedPatternId) {
+        PatternName selectedPattern = PatternName.getPatternByIdMap().get(Integer.parseInt(selectedPatternId));
+        Optional<DesignPattern> designPatternOptional = designPatterns.stream()
+                .filter(pattern -> pattern.getPatternName().equals(selectedPattern))
+                .findFirst();
+
+        if(designPatternOptional.isEmpty()) {
+            throw new RuntimeException("Design pattern is not found for " + selectedPatternId);
+        }
+
+        DesignPattern matchingPattern = designPatternOptional.get();
+
+        log.info("Selected pattern is " + matchingPattern.getPatternName().getName());
+        return matchingPattern;
     }
 }
