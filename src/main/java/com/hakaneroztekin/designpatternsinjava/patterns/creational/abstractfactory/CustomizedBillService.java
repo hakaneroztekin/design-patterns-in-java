@@ -34,11 +34,10 @@ public class CustomizedBillService implements DesignPattern {
     }
 
     @Override
-    public void printScenario() {
-        log.info("""
+    public String getScenario() {
+        return """
                 Customized bill service is calculating total credit card interest rate of different expenses for standard and premium customer types.
-                Each customer type has to have a group of interest rates for different expenses.
-                """);
+                Each customer type has to have a group of interest rates for different expenses.""";
     }
 
     @Override

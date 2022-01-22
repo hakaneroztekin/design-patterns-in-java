@@ -23,13 +23,6 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
 
     public final List<DesignPattern> designPatterns;
 
-    // Declaring ANSI_RESET so that we can reset the color
-    public static final String COLOR_RESET = "\u001B[0m";
-
-    // Declaring the color
-    // Custom declaration
-    public static final String YELLOW_TEXT = "\u001B[33m";
-
     public static void main(String[] args) {
         SpringApplication.run(DesignPatternsInJavaApplication.class, args);
     }
@@ -42,11 +35,10 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
 
         String selectedPatternId = getUserInput();
         getDesignPattern(selectedPatternId).ifPresentOrElse((matchingPattern) -> {
-            matchingPattern.printScenario();
+            log.info( changeTextColor(matchingPattern.getScenario(), TextColor.BLUE));
             matchingPattern.apply();
             log.info("Design pattern is executed successfully.");
-        }, () -> {
-            repeat.set(false);});
+        }, () -> repeat.set(false));
         }
 
         log.info("Exiting successfully.");
@@ -54,8 +46,7 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
 
     private String getUserInput() {
         Scanner scan = new Scanner(System.in);
-        String selectedPatternId = scan.next();
-        return selectedPatternId;
+        return scan.next();
     }
 
     private void printDesignPatterns() {
@@ -77,7 +68,7 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
 
         DesignPattern matchingPattern = designPatternOptional.get();
 
-        log.info(changeTextColor("Selected pattern is " + matchingPattern.getPatternName().getName(), TextColor.YELLOW));
+        log.info("Selected pattern is " + changeTextColor(matchingPattern.getPatternName().getName(), TextColor.YELLOW));
         return Optional.of(matchingPattern);
     }
 }

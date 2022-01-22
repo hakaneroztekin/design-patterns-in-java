@@ -27,8 +27,8 @@ public class BillService implements DesignPattern {
     }
 
     @Override
-    public void printScenario() {
-        log.info("Bill service is calculating total credit card interest rate for different expenses.");
+    public String getScenario() {
+        return "Bill service is calculating total credit card interest rate for different expenses.";
     }
 
     @Override

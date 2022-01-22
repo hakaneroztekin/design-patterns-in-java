@@ -5,7 +5,7 @@ import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
 public interface DesignPattern {
     PatternName getPatternName();
 
-    void printScenario();
+    String getScenario();
 
     void apply();
 }

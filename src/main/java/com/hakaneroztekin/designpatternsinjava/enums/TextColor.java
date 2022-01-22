@@ -7,7 +7,8 @@ import lombok.Getter;
 public enum TextColor {
     RESET("\u001B[0m"), // to reset color to default
     YELLOW("\u001B[33m"),
-    RED("\u001B[31m");
+    RED("\u001B[31m"),
+    BLUE("\u001B[34m");
 
     @Getter
     final String code;

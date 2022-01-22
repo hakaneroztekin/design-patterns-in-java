@@ -9,7 +9,8 @@ import java.util.Map;
 @AllArgsConstructor
 public enum PatternName {
     FACTORY("Factory"),
-    ABSTRACT_FACTORY("Abstract Factory");
+    ABSTRACT_FACTORY("Abstract Factory"),
+    BUILDER("Builder");
 
     @Getter
     final String name;
