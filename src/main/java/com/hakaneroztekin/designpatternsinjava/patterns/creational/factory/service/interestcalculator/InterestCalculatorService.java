@@ -1,6 +1,6 @@
-package com.hakaneroztekin.designpatternsinjava.patterns.factory.service.interest_calculator;
+package com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.service.interestcalculator;
 
-import com.hakaneroztekin.designpatternsinjava.patterns.factory.enums.ExpenseType;
+import com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.enums.ExpenseType;
 import org.slf4j.Logger;
 import org.slf4j.impl.StaticLoggerBinder;
 
