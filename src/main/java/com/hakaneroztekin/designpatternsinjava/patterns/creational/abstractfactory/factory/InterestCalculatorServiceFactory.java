@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("abstractFactory")
 public record InterestCalculatorServiceFactory (List<InterestCalculatorFactory> interestCalculatorFactories) {
 
     public InterestCalculatorFactory getInterestCalculatorFactory(CustomerType customerType) {

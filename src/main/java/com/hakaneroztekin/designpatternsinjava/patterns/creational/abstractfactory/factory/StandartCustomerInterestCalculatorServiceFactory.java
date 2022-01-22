@@ -2,12 +2,14 @@ package com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfact
 
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.enums.CustomerType;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.interestcalculator.InterestCalculatorService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public record StandartCustomerInterestCalculatorServiceFactory(List<InterestCalculatorService> interestCalculators) implements InterestCalculatorFactory {
+public record StandartCustomerInterestCalculatorServiceFactory(
+        @Qualifier("standardInterestCalculator") List<InterestCalculatorService> interestCalculators) implements InterestCalculatorFactory {
 
     @Override
     public CustomerType getCustomerType() {
