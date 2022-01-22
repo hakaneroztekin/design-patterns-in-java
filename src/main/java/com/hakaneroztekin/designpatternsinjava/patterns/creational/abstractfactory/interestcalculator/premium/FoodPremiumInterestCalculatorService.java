@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class FoodPremiumInterestCalculatorService implements InterestCalculatorService {
 
     @Getter
-    private final double interestRate = 0.0125;
+    private final double interestRate = 0.01;
 
     @Override
     public ExpenseType getExpenseType() {

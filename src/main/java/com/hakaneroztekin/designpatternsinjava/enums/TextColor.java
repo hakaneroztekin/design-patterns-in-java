@@ -6,13 +6,14 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum TextColor {
     RESET("\u001B[0m"), // to reset color to default
-    YELLOW("\u001B[33m");
+    YELLOW("\u001B[33m"),
+    RED("\u001B[31m");
 
     @Getter
     final String code;
 
     public static String changeTextColor(String text, TextColor textColor) {
-        return textColor.getCode() + text;
+        return textColor.getCode() + text + RESET.getCode();
     }
 }
 

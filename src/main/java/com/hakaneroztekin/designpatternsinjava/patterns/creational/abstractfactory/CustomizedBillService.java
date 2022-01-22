@@ -1,6 +1,7 @@
 package com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory;
 
 import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
+import com.hakaneroztekin.designpatternsinjava.enums.TextColor;
 import com.hakaneroztekin.designpatternsinjava.patterns.DesignPattern;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.enums.CustomerType;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.enums.ExpenseType;
@@ -14,14 +15,16 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import static com.hakaneroztekin.designpatternsinjava.enums.TextColor.changeTextColor;
+
 @Slf4j
 @Service
-public class CustomBillService implements DesignPattern {
+public class CustomizedBillService implements DesignPattern {
 
     @Qualifier("abstractFactory")
     private final InterestCalculatorServiceFactory calculatorServiceFactory;
 
-    public CustomBillService(InterestCalculatorServiceFactory calculatorServiceFactory) {
+    public CustomizedBillService(InterestCalculatorServiceFactory calculatorServiceFactory) {
         this.calculatorServiceFactory = calculatorServiceFactory;
     }
 
@@ -32,11 +35,15 @@ public class CustomBillService implements DesignPattern {
 
     @Override
     public void printScenario() {
-        log.info("Bill service is calculating total credit card interest rate of different expenses for standard and premium customer types.");
+        log.info("""
+                Customized bill service is calculating total credit card interest rate of different expenses for standard and premium customer types.
+                Each customer type has to have a group of interest rates for different expenses.
+                """);
     }
 
     @Override
     public void apply() {
+        log.info("Calculating the total interest for same monthly expense for the standard customer, then the premium customer.");
         MonthlyExpense monthlyExpense = MonthlyExpense.builder()
                 .expense(Expense.builder().expenseType(ExpenseType.FOOD).totalExpense(2500).build())
                 .expense(Expense.builder().expenseType(ExpenseType.EDUCATION).totalExpense(500).build())
@@ -47,7 +54,7 @@ public class CustomBillService implements DesignPattern {
                 .monthlyExpense(monthlyExpense)
                 .customerType(CustomerType.STANDARD)
                 .build();
-        log.info("Standart customer monthly expense is " + standartCustomerMonthlyExpense);
+        log.info(changeTextColor("Standard customer", TextColor.RED) + " monthly expense is " + standartCustomerMonthlyExpense);
 
         calculateTotalInterest(standartCustomerMonthlyExpense);
 
@@ -56,7 +63,7 @@ public class CustomBillService implements DesignPattern {
                 .monthlyExpense(monthlyExpense)
                 .customerType(CustomerType.PREMIUM)
                 .build();
-        log.info("Premium customer monthly expense is " + premiumCustomerMonthlyExpense);
+        log.info(changeTextColor("Premium customer", TextColor.RED) + " monthly expense is " + premiumCustomerMonthlyExpense);
 
         calculateTotalInterest(premiumCustomerMonthlyExpense);
     }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class HealthPremiumInterestCalculatorService implements InterestCalculatorService {
 
     @Getter
-    private final double interestRate = 0.0025;
+    private final double interestRate = 0.002;
 
     @Override
     public ExpenseType getExpenseType() {
