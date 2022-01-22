@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.hakaneroztekin.designpatternsinjava.enums.TextColor.changeTextColor;
 
@@ -35,13 +36,18 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        AtomicBoolean repeat = new AtomicBoolean(true);
+        while(repeat.get()) {
         printDesignPatterns();
 
         String selectedPatternId = getUserInput();
-        DesignPattern matchingPattern = getDesignPattern(selectedPatternId);
-
-        matchingPattern.printScenario();
-        matchingPattern.apply();
+        getDesignPattern(selectedPatternId).ifPresentOrElse((matchingPattern) -> {
+            matchingPattern.printScenario();
+            matchingPattern.apply();
+            log.info("Design pattern is executed successfully.");
+        }, () -> {
+            repeat.set(false);});
+        }
 
         log.info("Exiting successfully.");
     }
@@ -58,19 +64,20 @@ public class DesignPatternsInJavaApplication implements CommandLineRunner {
         PatternName.getPatternByIdMap().forEach((id, pattern) ->
                 log.info(changeTextColor(id + ": ", TextColor.YELLOW) + pattern.getName()));
     }
-    private DesignPattern getDesignPattern(String selectedPatternId) {
+    private Optional<DesignPattern> getDesignPattern(String selectedPatternId) {
         PatternName selectedPattern = PatternName.getPatternByIdMap().get(Integer.parseInt(selectedPatternId));
         Optional<DesignPattern> designPatternOptional = designPatterns.stream()
                 .filter(pattern -> pattern.getPatternName().equals(selectedPattern))
                 .findFirst();
 
         if(designPatternOptional.isEmpty()) {
-            throw new RuntimeException("Design pattern is not found for " + selectedPatternId);
+            log.error("Design pattern is not found for {}", selectedPatternId);
+            return Optional.empty();
         }
 
         DesignPattern matchingPattern = designPatternOptional.get();
 
         log.info(changeTextColor("Selected pattern is " + matchingPattern.getPatternName().getName(), TextColor.YELLOW));
-        return matchingPattern;
+        return Optional.of(matchingPattern);
     }
 }
