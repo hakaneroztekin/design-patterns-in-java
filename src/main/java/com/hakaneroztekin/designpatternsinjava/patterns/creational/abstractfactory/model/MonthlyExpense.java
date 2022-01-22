@@ -1,4 +1,4 @@
-package com.hakaneroztekin.designpatternsinjava.patterns.factory.model;
+package com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.model;
 
 
 import lombok.Builder;
