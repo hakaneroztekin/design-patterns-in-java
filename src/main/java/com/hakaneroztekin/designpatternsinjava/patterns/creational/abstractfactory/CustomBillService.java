@@ -10,16 +10,20 @@ import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfacto
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.model.CustomerMonthlyExpense;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.model.Expense;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.abstractfactory.model.MonthlyExpense;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
-public class BillService implements DesignPattern {
+public class CustomBillService implements DesignPattern {
 
+    @Qualifier("abstractFactory")
     private final InterestCalculatorServiceFactory calculatorServiceFactory;
+
+    public CustomBillService(InterestCalculatorServiceFactory calculatorServiceFactory) {
+        this.calculatorServiceFactory = calculatorServiceFactory;
+    }
 
     @Override
     public PatternName getPatternName() {
@@ -28,7 +32,7 @@ public class BillService implements DesignPattern {
 
     @Override
     public void printScenario() {
-        log.info("Bill service is calculating total credit card interest rate of different expenses for new and standart customer types.");
+        log.info("Bill service is calculating total credit card interest rate of different expenses for standard and premium customer types.");
     }
 
     @Override
@@ -48,13 +52,13 @@ public class BillService implements DesignPattern {
         calculateTotalInterest(standartCustomerMonthlyExpense);
 
 
-        CustomerMonthlyExpense newCustomerMonthlyExpense = CustomerMonthlyExpense.builder()
+        CustomerMonthlyExpense premiumCustomerMonthlyExpense = CustomerMonthlyExpense.builder()
                 .monthlyExpense(monthlyExpense)
-                .customerType(CustomerType.NEW)
+                .customerType(CustomerType.PREMIUM)
                 .build();
-        log.info("New customer monthly expense is " + standartCustomerMonthlyExpense);
+        log.info("Premium customer monthly expense is " + premiumCustomerMonthlyExpense);
 
-        calculateTotalInterest(standartCustomerMonthlyExpense);
+        calculateTotalInterest(premiumCustomerMonthlyExpense);
     }
 
     private void calculateTotalInterest(CustomerMonthlyExpense customerMonthlyExpense) {
