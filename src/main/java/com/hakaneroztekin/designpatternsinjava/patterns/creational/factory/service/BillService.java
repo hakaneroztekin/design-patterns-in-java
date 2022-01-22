@@ -2,20 +2,24 @@ package com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.serv
 
 import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
 import com.hakaneroztekin.designpatternsinjava.patterns.DesignPattern;
+import com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.enums.ExpenseType;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.model.Expense;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.model.MonthlyExpense;
-import com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.enums.ExpenseType;
 import com.hakaneroztekin.designpatternsinjava.patterns.creational.factory.service.interestcalculator.InterestCalculatorService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class BillService implements DesignPattern {
 
+    @Qualifier("factory")
     private final InterestCalculatorServiceFactory interestCalculatorServiceFactory;
+
+    public BillService(InterestCalculatorServiceFactory interestCalculatorServiceFactory) {
+        this.interestCalculatorServiceFactory = interestCalculatorServiceFactory;
+    }
 
     @Override
     public PatternName getPatternName() {
