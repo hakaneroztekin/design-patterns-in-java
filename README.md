@@ -44,3 +44,15 @@ Prototype pattern helps us to build complex objects.
 [+] It provides pre-built objects instead of creating it from scratch.
 
 [-] It gets complicated when objects are too complex and/or have circular dependencies.
+
+### 5. Singleton
+Singleton pattern enabled us to create a single instance of a class, then re-use when needed. 
+Singleton class has two responsibilities; generating a single unique instance of a class, providing a global access point to that class.
+
+[+] Guarantees there is a single instance of a class.
+
+[-] Requires special attention in a multi-threaded environment.
+
+[-] Since it has static methods, it is hard to unit test.
+
+[-] Violates single responsibility principle since it has two responsibilities.
