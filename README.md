@@ -2,6 +2,12 @@
 
 Design patterns are a typical solutions to specific problems. 
 
+---
+#### To Do
+- Review Readme, make it easier to read
+- Review Prototype example, use interface instead of a concrete class
+---
+
 ### Creational Design Patterns
 Creational patterns are focused on object creation and reuse.
 
@@ -31,3 +37,10 @@ Builder pattern enables us to build complex objects (with a lot of fields) in an
 [+] Class responsibilities are distributed (Single Responsibility Principle).
 
 [-] Additional builder classes are introduced with plan implementation, yet it's pretty lightweight with the help of libraries.
+
+### 4. Prototype
+Prototype pattern helps us to build complex objects.
+
+[+] It provides pre-built objects instead of creating it from scratch.
+
+[-] It gets complicated when objects are too complex and/or have circular dependencies.
