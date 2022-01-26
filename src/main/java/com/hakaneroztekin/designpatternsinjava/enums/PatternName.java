@@ -10,7 +10,8 @@ import java.util.Map;
 public enum PatternName {
     FACTORY("Factory"),
     ABSTRACT_FACTORY("Abstract Factory"),
-    BUILDER("Builder");
+    BUILDER("Builder"),
+    PROTOTYPE("Prototype");
 
     @Getter
     final String name;
