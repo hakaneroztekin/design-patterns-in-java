@@ -3,9 +3,41 @@
 Design patterns are a typical solutions to specific problems. 
 
 ---
+Design Pattern List
+
+**Creational Patterns**
+- [x] Factory
+- [x] Abstract Factory
+- [x] Builder
+- [x] Prototype
+- [x] Singleton
+
+**Structural Patterns**
+- [x] Adapter
+- [ ] Bridge
+- [ ] Composite
+- [ ] Decorator
+- [ ] Facade
+- [ ] Flyweight
+- [ ] Proxy
+
+**Behavioral Patterns**
+- [ ] Chain of Responsibility
+- [ ] Command
+- [ ] Iterator
+- [ ] Mediator
+- [ ] Memento
+- [ ] Observer
+- [ ] State
+- [ ] Strategy
+- [ ] Template Method
+- [ ] Visitor
+ 
+---
 #### To Do
 - Review Readme, make it easier to read
 - Review Prototype example, use interface instead of a concrete class
+
 ---
 
 ### Creational Design Patterns
