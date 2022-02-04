@@ -1,6 +1,6 @@
-package com.hakaneroztekin.designpatternsinjava.patterns.behavioral.adapter.service.stock_services;
+package com.hakaneroztekin.designpatternsinjava.patterns.structural.adapter.service.stock_services;
 
-import com.hakaneroztekin.designpatternsinjava.patterns.behavioral.adapter.model.GoogleApiStock;
+import com.hakaneroztekin.designpatternsinjava.patterns.structural.adapter.model.GoogleApiStock;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,8 +1,8 @@
-package com.hakaneroztekin.designpatternsinjava.patterns.behavioral.adapter;
+package com.hakaneroztekin.designpatternsinjava.patterns.structural.adapter;
 
 import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
 import com.hakaneroztekin.designpatternsinjava.patterns.DesignPattern;
-import com.hakaneroztekin.designpatternsinjava.patterns.behavioral.adapter.service.StockService;
+import com.hakaneroztekin.designpatternsinjava.patterns.structural.adapter.service.StockService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

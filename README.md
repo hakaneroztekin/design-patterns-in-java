@@ -58,7 +58,8 @@ Singleton class has two responsibilities; generating a single unique instance of
 [-] Violates single responsibility principle since it has two responsibilities.
 
 
-### Behavioral Design patterns
+### Structural Design patterns
+Structural patterns are focused on building flexible structures with objects.
 
 ### 6. Adapter
 Adapter adapts incompatible classes to work together with our code. 

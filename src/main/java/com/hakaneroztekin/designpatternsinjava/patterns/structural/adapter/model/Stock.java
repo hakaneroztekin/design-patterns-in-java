@@ -1,4 +1,4 @@
-package com.hakaneroztekin.designpatternsinjava.patterns.behavioral.adapter.model;
+package com.hakaneroztekin.designpatternsinjava.patterns.structural.adapter.model;
 
 import lombok.*;
 
