@@ -56,3 +56,18 @@ Singleton class has two responsibilities; generating a single unique instance of
 [-] Since it has static methods, it is hard to unit test.
 
 [-] Violates single responsibility principle since it has two responsibilities.
+
+
+### Behavioral Design patterns
+
+### 6. Adapter
+Adapter adapts incompatible classes to work together with our code. 
+It's helpful when we can't change the incompatible classes such as in 3rd party libraries.
+
+[+] Business logic is left untouched since the conversion is made outside [Single Responsibility]
+
+[+] New adapters can be introduced without changing the existing code [Open/Closed Principle]
+
+[-] Code becomes more complex with new classes.
+
+
