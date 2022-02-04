@@ -13,7 +13,8 @@ public enum PatternName {
     BUILDER("Builder"),
     PROTOTYPE("Prototype"),
     SINGLETON("Singleton"),
-    ADAPTER("Adapter");
+    ADAPTER("Adapter"),
+    BRIDGE("Bridge");
 
     @Getter
     final String name;
