@@ -1,9 +1,7 @@
-## Design Patterns
-
-Design patterns are a typical solutions to specific problems. 
+Design patterns are a typical solutions to specific problems.
 
 ---
-Design Pattern List
+## Design Patterns
 
 **Creational Patterns**
 - [x] Factory
