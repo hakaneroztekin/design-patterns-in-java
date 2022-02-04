@@ -12,7 +12,7 @@ Design patterns are a typical solutions to specific problems.
 
 **Structural Patterns**
 - [x] Adapter
-- [ ] Bridge
+- [x] Bridge
 - [ ] Composite
 - [ ] Decorator
 - [ ] Facade
@@ -102,3 +102,7 @@ It's helpful when we can't change the incompatible classes such as in 3rd party 
 [-] Code becomes more complex with new classes.
 
 
+### 7. Bridge
+Bridge pattern splits our monolithic class to the functional dimensions, for e.g. shape, color, weight. 
+
+[+] Each class can be updated without changing the original class.
