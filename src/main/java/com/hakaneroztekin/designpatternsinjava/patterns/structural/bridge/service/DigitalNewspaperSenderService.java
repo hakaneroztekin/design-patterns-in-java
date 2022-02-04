@@ -3,7 +3,7 @@ package com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge.servi
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("digitalNewspaperSenderService")
 @Slf4j
 public class DigitalNewspaperSenderService implements NewspaperSenderService {
 
