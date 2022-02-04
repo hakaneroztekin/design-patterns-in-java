@@ -2,14 +2,18 @@ package com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge;
 
 import com.hakaneroztekin.designpatternsinjava.enums.PatternName;
 import com.hakaneroztekin.designpatternsinjava.patterns.DesignPattern;
-import com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge.model.DigitalNewspaper;
-import com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge.model.PrintedNewspaper;
-import com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge.service.DigitalNewspaperSenderService;
-import com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge.service.PrintedNewspaperSenderService;
+import com.hakaneroztekin.designpatternsinjava.patterns.structural.bridge.model.Newspaper;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
+@RequiredArgsConstructor
 public class NewspaperSubscriptionService implements DesignPattern {
+
+    private final List<Newspaper> newspapers;
+
     @Override
     public PatternName getPatternName() {
         return PatternName.BRIDGE;
@@ -22,10 +26,6 @@ public class NewspaperSubscriptionService implements DesignPattern {
 
     @Override
     public void apply() {
-        DigitalNewspaper digitalNewspaper = new DigitalNewspaper(new DigitalNewspaperSenderService());
-        digitalNewspaper.sendNewspaper();
-
-        PrintedNewspaper printedNewspaper = new PrintedNewspaper(new PrintedNewspaperSenderService());
-        printedNewspaper.sendNewspaper();
+        newspapers.forEach(Newspaper::sendNewspaper);
     }
 }
