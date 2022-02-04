@@ -12,7 +12,8 @@ public enum PatternName {
     ABSTRACT_FACTORY("Abstract Factory"),
     BUILDER("Builder"),
     PROTOTYPE("Prototype"),
-    SINGLETON("Singleton");
+    SINGLETON("Singleton"),
+    ADAPTER("Adapter");
 
     @Getter
     final String name;
